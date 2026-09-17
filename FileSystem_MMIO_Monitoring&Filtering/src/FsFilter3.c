@@ -167,14 +167,14 @@ PreOperation(
 
     status = FltGetFileNameInformation(Data, FLT_FILE_NAME_OPENED, &pFileInfo);
     if (!NT_SUCCESS(status)) {
-        return FLT_POSTOP_FINISHED_PROCESSING;
+        return FLT_PREOP_SUCCESS_NO_CALLBACK;
     }
     // IRP에 명시된 파일 경로를 알아냅니다
 
     status = FltParseFileNameInformation(pFileInfo);
     if (!NT_SUCCESS(status)) {
         FltReleaseFileNameInformation(pFileInfo);
-        return FLT_POSTOP_FINISHED_PROCESSING;
+        return FLT_PREOP_SUCCESS_NO_CALLBACK;
     } // 파일 경로를 파싱하여 구조체 멤버를 채워줍니다. (파일 명, 확장자, ...)
 
     ULONG AccessPID = FltGetRequestorProcessId(Data);

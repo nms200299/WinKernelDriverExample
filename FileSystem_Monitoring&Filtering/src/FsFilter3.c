@@ -232,7 +232,7 @@ FsFilter3PreOperation (
                 status = FltParseFileNameInformation(pFileInfo);
                 if (!NT_SUCCESS(status)) {
                     FltReleaseFileNameInformation(pFileInfo);
-                    return FLT_POSTOP_FINISHED_PROCESSING;
+                    return FLT_PREOP_SUCCESS_NO_CALLBACK;
                 }
                 // 파일 경로를 파싱하여 구조체 멤버를 채워줍니다. (파일 명, 확장자, ...)
 
